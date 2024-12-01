@@ -4,7 +4,7 @@
 
 ---
 
-## **📋 Fitur Utama**
+## 📋 Fitur Utama
 1. **Pencarian Tempat Parkir**  
    - Fitur pencarian berdasarkan nama spot parkir.
    - Tampilkan pesan `Spot Parking Not Found` jika tidak ditemukan.
@@ -28,7 +28,7 @@
 
 ---
 
-## 💻 Teknologi yang Digunakan**
+## 💻 Teknologi yang Digunakan
 
 - **Framework**: React.js
 - **UI Library**: Bootstrap, React-Konva
