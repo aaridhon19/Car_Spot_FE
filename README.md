@@ -28,7 +28,7 @@
 
 ---
 
-## **💻 Teknologi yang Digunakan**
+## 💻 Teknologi yang Digunakan**
 
 - **Framework**: React.js
 - **UI Library**: Bootstrap, React-Konva
@@ -38,7 +38,7 @@
 
 ---
 
-## **🚀 Cara Menjalankan Proyek**
+## 🚀 Cara Menjalankan Proyek**
 
 ### 1. Clone repository
 ```bash
@@ -60,7 +60,7 @@ npm start
 http://localhost:3000
 ```
 
-## **📧 Kontak
+## 📧 Kontak
 Jika anda memiliki pertanyaan atau tertarik, silahkan hubungi :
 Email : adamrizqi.arr@gmail.com
 Linkedln : https://www.linkedin.com/in/adam-rizqi-romadhon-6962b51bb/
