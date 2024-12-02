@@ -12,7 +12,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .App-logo {
@@ -42,6 +42,29 @@ html {
   color: #61dafb;
 }
 
+.App-title {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.App-title-h1 {
+  font-size: 45px;
+  margin-top: 20px;
+  font-weight: 900;
+}
+
+.App-logo {
+  width: 50px;
+  height: 60px;
+  background-image: url("../public/logo.webp");
+  background-position: center;
+  background-size: cover;
+  margin-top: 12px;
+  border-radius: 50%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -62,6 +85,35 @@ html {
   flex-grow: 1;
   overflow-y: auto;
   position: relative;
+}
+
+.parking-map-cover {
+  background-image: url("../public/background.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.parking-map-cover-color {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.parking-map-not-found {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 .info {
@@ -92,19 +144,6 @@ html {
 .info-label {
   font-weight: 600;
   color: rgb(92, 87, 87);
-}
-
-.title {
-  margin-bottom: 10px;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.title-h1 {
-  font-size: 45px;
-  margin-top: 20px;
-  font-weight: 900;
 }
 
 .btn-book {
@@ -146,13 +185,18 @@ html {
   font-style: italic;
 }
 
+.container-detail {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 @media (max-width: 768px) {
-  .title h1 {
+  .App-title-h1 {
     font-size: 1.5rem;
   }
 
-  .title img {
-    width: 40px; 
+  .App-logo{
+    width: 40px;
     height: 40px;
   }
 
@@ -166,13 +210,13 @@ html {
 
   .info {
     bottom: 20px;
-    left: 10px;
+    left: 20px;
     padding: 8px;
     font-size: 14px;
   }
 
   .search-container {
-    width: 80%; 
+    width: 80%;
     margin: 10px auto;
   }
 
@@ -182,13 +226,13 @@ html {
 }
 
 @media (max-width: 480px) {
-  .title h1 {
-    font-size: 1.2rem; 
+  .App-title h1 {
+    font-size: 1.2rem;
   }
 
-  .title img {
-    width: 35px; 
-    height: 35px;
+  .App-logo{
+    width: 30px;
+    height: 30px;
   }
 
   .parking-map {
@@ -200,15 +244,27 @@ html {
   }
 
   .info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     bottom: 10px;
-    left: 5px;
+    left: 10px;
     padding: 6px;
     font-size: 12px;
   }
 
   .info-item {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .info-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
   }
 
   .btn-close {
@@ -221,6 +277,6 @@ html {
   }
 
   .search-input {
-    font-size: 12px; 
+    font-size: 12px;
   }
 }

@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function DetailBooking({ onDetail, spotSelected }) {
     return (
-        <div className='container my-4' style={{paddingLeft:'10px', paddingRight:'10px'}}>
+        <div className='container-detail my-4'>
             <div className='text-center mb-4'>
                 <h3 className='text-danger fw-bold'>Detail Parking Spot <span>{spotSelected}</span></h3>
             </div>

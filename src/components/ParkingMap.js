@@ -3,7 +3,16 @@ import { Stage, Layer, Rect, Text } from 'react-konva';
 
 export default function ParkingMap({ dataParking, onSelectSpot, search }) {
     const [stageWidth, setStageWidth] = useState(window.innerWidth);
-    const [stageHeight, setStageHeight] = useState(window.innerHeight); 
+    const [stageHeight, setStageHeight] = useState(window.innerHeight);
+    const [hoveredSpot, setHoveredSpot] = useState(null);
+
+    const handleMouseEnter = (id) => {
+        setHoveredSpot(id);
+    }
+
+    const handleMouseLeave = () => {
+        setHoveredSpot(null);
+    }
 
     const maxColumns = 10;
     const gap = 20;
@@ -30,33 +39,13 @@ export default function ParkingMap({ dataParking, onSelectSpot, search }) {
     );
 
     return (
-        <div style={{ backgroundImage: `url(background.png)`, backgroundPosition: 'center', backgroundSize: 'cover', position: 'relative' }}>
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.6)' 
-            }}></div>
-            
+        <div className='parking-map-cover'>
+            <div className='parking-map-cover-color' />
             {filteredDataParking.length === 0 && search && (
-                <div style={{
-                    position: 'absolute',
-                    top: '10%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    color: 'white',
-                    fontSize: '20px',
-                    fontWeight: 'bold',
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                    padding: '10px 20px',
-                    borderRadius: '10px'
-                }}>
+                <div className='parking-map-not-found'>
                     Spot Parking Not Found
                 </div>
             )}
-
             <Stage width={stageWidth} height={stageHeight}>
                 <Layer>
                     {filteredDataParking.map((spot, index) => {
@@ -78,6 +67,13 @@ export default function ParkingMap({ dataParking, onSelectSpot, search }) {
                                     strokeWidth={2}
                                     cornerRadius={15}
                                     onClick={() => onSelectSpot(spot.id)}
+                                    scale={
+                                        hoveredSpot === spot.id
+                                            ? { x: 1.02, y: 1.02 }
+                                            : { x: 1, y: 1 }
+                                    }
+                                    onMouseEnter={() => handleMouseEnter(spot.id)}
+                                    onMouseLeave={handleMouseLeave}
                                 />
                                 <Text
                                     x={x + spotSize / 2 - 10}

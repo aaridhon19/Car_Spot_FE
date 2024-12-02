@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { showErrorAlert, showSuccessAlert, showConfirmAlert } from '../helper/alertHelper.js';
 
 export default function FormBooking({ onForm, spotSelected }) {
     const [formParking, setFormParking] = useState({
@@ -39,61 +39,39 @@ export default function FormBooking({ onForm, spotSelected }) {
         const { name, vehicleRegionCode, vehicleNumberDigits, vehicleLetterCode, durationHours, durationMinutes, spot } = formParking;
 
         if (!name) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Name is required!',
-            });
+            showErrorAlert('Name is required!');
             return;
         }
         if (!vehicleRegionCode || !vehicleNumberDigits || !vehicleLetterCode) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Vehicle Number is required!',
-            });
+            showErrorAlert('Vehicle Number is required!');
             return;
         }
 
         if (!durationHours || !durationMinutes) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Duration is required!',
-            });
+            showErrorAlert('Duration is required!');
             return;
         }
 
-        Swal.fire({
-            title: "Are you sure to order this booking?",
-            showCancelButton: true,
-            confirmButtonText: "Yes",
-            confirmButtonColor: 'rgb(7, 219, 103)',
-            cancelButtonText: "No",
-            cancelButtonColor: 'rgb(251, 27, 27)',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                onForm({
-                    name,
-                    vehicleRegionCode,
-                    vehicleNumberDigits,
-                    vehicleLetterCode,
-                    durationHours,
-                    durationMinutes,
-                    spot,
-                });
-                setFormParking({
-                    name: '',
-                    vehicleRegionCode: '',
-                    vehicleNumberDigits: '',
-                    vehicleLetterCode: '',
-                    durationHours: '',
-                    durationMinutes: '',
-                    spot: spotSelected || ''
-                });
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Booking Success!',
-                    text: `Spot ${spotSelected} success booked for ${name}!`,
-                });
-            }
+        showConfirmAlert(`Are you sure to book parking spot ${spot}?`, () => {
+            onForm({
+                name,
+                vehicleRegionCode,
+                vehicleNumberDigits,
+                vehicleLetterCode,
+                durationHours,
+                durationMinutes,
+                spot,
+            });
+            setFormParking({
+                name: '',
+                vehicleRegionCode: '',
+                vehicleNumberDigits: '',
+                vehicleLetterCode: '',
+                durationHours: '',
+                durationMinutes: '',
+                spot: spotSelected || ''
+            });
+            showSuccessAlert('Booking Success!', `Your parking spot ${spot} has been booked successfully!`);
         });
 
     }

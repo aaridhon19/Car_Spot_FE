@@ -55,24 +55,14 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className='title'>
-        <div
-          style={{
-            width: '50px',
-            height: '60px',
-            backgroundImage: `url(logo.webp)`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            marginTop: '12px',
-            borderRadius: '50%',
-          }}
-        />
-        <h1 className='title-h1'>ARKING SPOT CAR SYSTEM</h1>
+      <div className='App-title'>
+        <div className='App-logo' />
+        <h1 className='App-title-h1'>ARKING SPOT CAR SYSTEM</h1>
       </div>
       <SearchParking onSearch={handleSearch} />
       <div className='parking-map'>
         <div className='parking-map-body'>
-          <ParkingMap dataParking={filteredParking} onSelectSpot={handleSelectedSpot} search={search}/>
+          <ParkingMap dataParking={filteredParking} onSelectSpot={handleSelectedSpot} search={search} />
         </div>
 
         {/* Modal Bootstrap */}
